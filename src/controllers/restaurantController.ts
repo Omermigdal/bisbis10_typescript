@@ -8,6 +8,21 @@ export const getAllRestaurants = async (req: Request, res: Response) => {
   res.status(200).json(restaurants);
 };
 
+export const getRestaurantsByCuisine = async (req: Request, res: Response) => {
+    const { cuisine } = req.query;
+    if (!cuisine) {
+      return res.status(400).send('Cuisine query parameter is required'); 
+    }
+    const restaurants = await prisma.restaurant.findMany({
+      where: {
+        cuisines: {
+          has: cuisine as string,
+        },
+      },
+    });
+    res.status(200).json(restaurants); // check this is good
+  };
+
 export const getRestaurantById = async (req: Request, res: Response) => {
   const { id } = req.params;
   const restaurant = await prisma.restaurant.findUnique({
