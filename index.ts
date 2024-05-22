@@ -1,34 +1,36 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
-import routes from "./src/controllers/demoController";
-import client from "./db/db";
+import restaurantsRouter from "./src/routes/restaurantsRoutes";
 
-//For env File
+import { PrismaClient } from "@prisma/client";
+
+// Load environment variables from .env file
 dotenv.config();
 
 const app: Application = express();
 const port = process.env.PORT || 8000;
 
-app.use("/", routes);
+// Middleware to parse JSON bodies
+app.use(express.json());
 
+// Mount routes
+app.use("/restaurants", restaurantsRouter);
+
+
+const prisma = new PrismaClient();
+
+// Start server
 app.listen(port, () => {
-  console.log(`Server is On at http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
 
-process.on("SIGINT", () => {
-  client.end((err: Error) => {
-    if (err) {
-      console.error("error during disconnection", err.stack);
-    }
-    process.exit();
-  });
+// Graceful shutdown
+process.on("SIGINT", async () => {
+  await prisma.$disconnect();
+  process.exit();
 });
 
-process.on("SIGTERM", () => {
-  client.end((err: Error) => {
-    if (err) {
-      console.error("error during disconnection", err.stack);
-    }
-    process.exit();
-  });
+process.on("SIGTERM", async () => {
+  await prisma.$disconnect();
+  process.exit();
 });
