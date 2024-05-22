@@ -22,7 +22,7 @@ export const addRestaurant = async (req: Request, res: Response) => {
   const newRestaurant = await prisma.restaurant.create({
     data: { name, isKosher, cuisines },
   });
-  res.status(201); //201= created
+  res.status(201).send(); //201= created
 };
 
 export const updateRestaurant = async (req: Request, res: Response) => {
@@ -32,11 +32,11 @@ export const updateRestaurant = async (req: Request, res: Response) => {
     where: { id: parseInt(id) },
     data: { name, isKosher, cuisines },
   });
-  res.status(200);
+  res.status(200).send();
 };
 
 export const deleteRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;
   await prisma.restaurant.delete({ where: { id: parseInt(id) } });
-  res.status(204);
+  res.status(204).send();
 };
