@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import dotenv from "dotenv";
 import restaurantsRouter from "./src/routes/restaurantsRoutes";
 import dishesRouter from "./src/routes/dishesRoutes";
+import orderRouter from "./src/routes/orderRoutes";
 
 import { PrismaClient } from "@prisma/client";
 
@@ -17,6 +18,7 @@ app.use(express.json());
 // Mount routes
 app.use("/restaurants", restaurantsRouter);
 app.use("/restaurants/:id/dishes", dishesRouter);
+app.use("/order", orderRouter);
 
 
 const prisma = new PrismaClient();
