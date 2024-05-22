@@ -9,7 +9,7 @@ export const addDish = async (req: Request, res: Response) => {
   const newDish = await prisma.dish.create({
     data: { name, description, price, restaurantId: parseInt(id) },
   });
-  res.status(201).json(newDish);
+  res.status(201).send();
 };
 
 export const updateDish = async (req: Request, res: Response) => {
@@ -19,7 +19,7 @@ export const updateDish = async (req: Request, res: Response) => {
     where: { id: parseInt(dishId) },
     data: { name, description, price, restaurantId: parseInt(id) },
   });
-  res.json(updatedDish);
+  res.status(200).send();
 };
 
 export const deleteDish = async (req: Request, res: Response) => {
@@ -33,5 +33,5 @@ export const getDishesByRestaurant = async (req: Request, res: Response) => {
   const dishes = await prisma.dish.findMany({
     where: { restaurantId: parseInt(id) },
   });
-  res.json(dishes);
+  res.status(200).json(dishes);
 };
