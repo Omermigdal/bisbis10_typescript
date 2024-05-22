@@ -1,14 +1,58 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-generator client {
-  provider = "prisma-client-js"
-}
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Restaurant {
+  id        Int       @id @default(autoincrement())
+  name      String
+  isKosher  Boolean   @map("is_kosher")
+  cuisines  Json[]
+  dishes    Dish[]
+  ratings   Rating[]
+  orders    Order[]
+  averageRating Decimal?  @db.Decimal(3,1) // for new restaurants, avg rating is null
+  
+}
+
+model Dish {
+  id            Int      @id @default(autoincrement())
+  name          String
+  description   String
+  price         Decimal @db.Decimal(5,2)
+  restaurant    Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId  Int
+  orderitems OrderItem[]
+  @@map("dishes")
+
+}
+
+model Rating {
+  id            Int      @id @default(autoincrement())
+  rating        Decimal  @db.Decimal(2,1)
+  restaurantId  Int      @map("restaurant_id")
+  restaurant    Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+}
+
+model Order {
+  id            Int      @id @default(autoincrement()) // check if string+ uuid is better
+  totalAmount   Decimal  @db.Decimal(5,2) @map("total_amount")
+  restaurantId  Int
+  restaurant    Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  orderItems   OrderItem[]
+
+}
+
+model OrderItem {
+  id            Int     @id @default(autoincrement())
+  dishId        Int     @map("dish_id")
+  dish          Dish    @relation(fields: [dishId], references: [id], onDelete: Cascade)
+  orderId       Int     @map("order_id")
+  order         Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
