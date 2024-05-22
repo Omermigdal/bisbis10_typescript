@@ -43,7 +43,7 @@ export const makeOrder = async (req: Request, res: Response) => {
         },
     });
 
-    res.status(201).json(order); // created
+    res.status(200).json(order.id); //TODO : check if i cn serialize
 
     
     
