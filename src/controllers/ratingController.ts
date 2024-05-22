@@ -41,7 +41,7 @@ export const addRating = async (req: Request, res: Response) => {
       include: { ratings: true },
     });
     
-    res.status(200);
+    res.status(200).send();
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while processing your request' });
