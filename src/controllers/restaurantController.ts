@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export const getAllRestaurants = async (req: Request, res: Response) => {
   const restaurants = await prisma.restaurant.findMany();
-  res.json(restaurants);
+  res.status(200).json(restaurants);
 };
 
 export const getRestaurantById = async (req: Request, res: Response) => {
@@ -14,7 +14,7 @@ export const getRestaurantById = async (req: Request, res: Response) => {
     where: { id: parseInt(id) },
     include: { dishes: true },
   });
-  res.json(restaurant);
+  res.status(200).json(restaurant);
 };
 
 export const addRestaurant = async (req: Request, res: Response) => {
@@ -22,7 +22,7 @@ export const addRestaurant = async (req: Request, res: Response) => {
   const newRestaurant = await prisma.restaurant.create({
     data: { name, isKosher, cuisines },
   });
-  res.status(201).json(newRestaurant);
+  res.status(201); //201= created
 };
 
 export const updateRestaurant = async (req: Request, res: Response) => {
@@ -32,11 +32,11 @@ export const updateRestaurant = async (req: Request, res: Response) => {
     where: { id: parseInt(id) },
     data: { name, isKosher, cuisines },
   });
-  res.json(updatedRestaurant);
+  res.status(200);
 };
 
 export const deleteRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;
   await prisma.restaurant.delete({ where: { id: parseInt(id) } });
-  res.status(204).send();
+  res.status(204);
 };
