@@ -7,8 +7,8 @@ export const addRating = async (req: Request, res: Response) => {
   const { restaurantId, rating } = req.body;
 
   // Validate inputs
-  if (restaurantId === undefined || rating === undefined || rating < 0 || rating > 5) {
-    return res.status(400).json({ error: 'Invalid input' });
+  if (!restaurantId|| rating < 0 || rating > 10) {
+    return res.status(400).json({ error: 'Invalid input, please rate between 0 and 10' });
   }
 
   try {

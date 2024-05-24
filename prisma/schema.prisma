@@ -23,10 +23,10 @@ model Restaurant {
 model Dish {
   id            Int      @id @default(autoincrement())
   name          String
-  description   String
+  description   String?
   price         Decimal @db.Decimal(5,2)
   restaurant    Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
-  restaurantId  Int
+  restaurantId  Int 
   orderitems OrderItem[]
   @@map("dishes")
 
