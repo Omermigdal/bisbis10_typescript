@@ -4,24 +4,23 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const getAllRestaurants = async (req: Request, res: Response) => {
-  const restaurants = await prisma.restaurant.findMany();
-  res.status(200).json(restaurants);
-};
-
-export const getRestaurantsByCuisine = async (req: Request, res: Response) => {
-    const { cuisine } = req.query;
-    if (!cuisine) {
-      return res.status(400).send('Cuisine query parameter is required'); 
-    }
+  if (req.query.cuisine) {
+    const cuisine = req.query.cuisine as string;
     const restaurants = await prisma.restaurant.findMany({
       where: {
         cuisines: {
-          has: cuisine as string,
+          has: cuisine,
         },
       },
     });
-    res.status(200).json(restaurants); // check this is good
-  };
+
+    res.status(200).json(restaurants);
+    return;
+  }
+  const restaurants = await prisma.restaurant.findMany();
+
+  res.status(200).json(restaurants);
+};
 
 export const getRestaurantById = async (req: Request, res: Response) => {
   const { id } = req.params;
