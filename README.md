@@ -63,9 +63,10 @@ For your convenience, docker-compose.yml includes Postgresql DB, the app is alre
 1. Node - https://nodejs.org/en
 2. Docker - https://www.docker.com/products/docker-desktop/
 
-## Instructions
+## Running The app
 
-1. Fork this repo to your GitHub account.
-2. Clone it to your local machine.
-3. Complete the task.
-4. On completion, send your repo link to the rm-tdpisraelhomework@intl.att.com email, (a snapshot will be taken from your repo once you submit the homework). please do not update your repo after you submit the homework.
+- Before running the app , Please make sure that docker daemon is running
+
+- **Quickstart**: run 'npm run restaurants'.
+- **Database**: For your convinience , use the ORM UI by running 'npx prisma studio'.
+
