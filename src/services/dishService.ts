@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma= new PrismaClient;
 
 
-export const Dish_addToSystem= async (restaurantId:number, name:string, description:string, price:number) =>{
+export const Dish_addToSystem= async (name:string, description:string, price:number,restaurantId:number,) =>{
     try{
         await prisma.dish.create({
             data: { name, description, price, restaurantId },
