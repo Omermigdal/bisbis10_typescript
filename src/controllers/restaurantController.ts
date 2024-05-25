@@ -1,56 +1,78 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { getAll,getByCuisine,getById,addToSystem,update,deleteById } from '../services/restaurantService';
 
-const prisma = new PrismaClient();
-
-export const getAllRestaurants = async (req: Request, res: Response) => {
-  if (req.query.cuisine) {
+export const getRestaurants = async (req: Request, res: Response) => {
+if (req.query.cuisine) {
+    try{
     const cuisine = req.query.cuisine as string;
-    const restaurants = await prisma.restaurant.findMany({
-      where: {
-        cuisines: {
-          has: cuisine,
-        },
-      },
-    });
-
+    const restaurants = await getByCuisine(cuisine);
     res.status(200).json(restaurants);
-    return;
+    }
+    catch(errorMessage)
+    {
+      return errorMessage;
+    }
   }
-  const restaurants = await prisma.restaurant.findMany();
-
-  res.status(200).json(restaurants);
+  else {
+    try{
+    const restaurants =await getAll();
+    res.status(200).json(restaurants).send();
+    }
+    catch(errorMessage)
+    {
+      return errorMessage;
+    }
+}
 };
+
 
 export const getRestaurantById = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const restaurant = await prisma.restaurant.findUnique({
-    where: { id: parseInt(id) },
-    include: { dishes: true },
-  });
+  try{
+  const restaurant = await getById(parseInt(id));
   res.status(200).json(restaurant);
+  }
+  catch(errorMessage)
+  {
+    return errorMessage;
+  }
 };
 
 export const addRestaurant = async (req: Request, res: Response) => {
   const { name, isKosher, cuisines } = req.body;
-  const newRestaurant = await prisma.restaurant.create({
-    data: { name, isKosher, cuisines },
-  });
-  res.status(201).send(); //201= created
+  try{
+    await addToSystem(name,isKosher,cuisines);
+    res.status(201).send(); //201= created
+  }
+  catch(errorMessage)
+  {
+    return errorMessage;
+  }
 };
 
 export const updateRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { name, isKosher, cuisines } = req.body;
-  const updatedRestaurant = await prisma.restaurant.update({
-    where: { id: parseInt(id) },
-    data: { name, isKosher, cuisines },
-  });
-  res.status(200).send();
+  try{
+    await update(parseInt(id), name,isKosher,cuisines);
+    res.status(200).send();
+  }
+  catch(errorMessage)
+  {
+    return errorMessage;
+  }
 };
 
 export const deleteRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;
-  await prisma.restaurant.delete({ where: { id: parseInt(id) } });
   res.status(204).send();
+  try{
+    await deleteById(parseInt(id));
+    res.status(200).send();
+  }
+  catch(errorMessage)
+  {
+    return errorMessage;
+  }
+
 };

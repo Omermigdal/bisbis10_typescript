@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { getAllRestaurants, getRestaurantById, addRestaurant, updateRestaurant, deleteRestaurant } from '../controllers/restaurantController';
+import { getRestaurants, getRestaurantById, addRestaurant, updateRestaurant, deleteRestaurant } from '../controllers/restaurantController';
 
 const restaurantsRouter = Router();
 
-restaurantsRouter.get('/', getAllRestaurants);
+restaurantsRouter.get('/', getRestaurants);
 restaurantsRouter.get('/:id', getRestaurantById);
 restaurantsRouter.post('/', addRestaurant);
 restaurantsRouter.put('/:id', updateRestaurant);
