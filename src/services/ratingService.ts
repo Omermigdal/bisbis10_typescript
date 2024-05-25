@@ -5,9 +5,7 @@ const prisma = new PrismaClient();
 
 export const Rating_add = async (restaurantId:number,rating:number) =>
     {
-        //TODO  Validate rating
     try {
-        // Start a transaction
         await prisma.$transaction([
         prisma.rating.create({
             data: { restaurantId, rating },

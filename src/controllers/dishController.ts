@@ -31,7 +31,6 @@ export const updateDish = async (req: Request, res: Response) => {
 
 
 
-
 export const deleteDish = async (req: Request, res: Response) => {
   const { dishId } = req.params;
 try{
@@ -44,6 +43,7 @@ try{
     res.status(500).send(errorMessage);
   }
 };
+
 
 export const getDishesByRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;

@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma= new PrismaClient;
 
-
 export const Dish_addToSystem= async (name:string, description:string, price:number,restaurantId:number,) =>{
     try{
         await prisma.dish.create({
@@ -29,8 +28,6 @@ export const Dish_update= async (name:string,description:string,price:number,res
 };
 
     
-
-
 export const Dish_deleteById = async(dishId:number)=>{
 
     try {

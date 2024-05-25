@@ -2,8 +2,6 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-
-
 export const Order_create = async (restaurantId:number,orderItems:any) =>
     {
       try{

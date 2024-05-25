@@ -38,6 +38,7 @@ export const getRestaurantById = async (req: Request, res: Response) => {
   }
 };
 
+
 export const addRestaurant = async (req: Request, res: Response) => {
   const { name, isKosher, cuisines } = req.body;
   try{
@@ -49,6 +50,7 @@ export const addRestaurant = async (req: Request, res: Response) => {
     res.status(500).send(errorMessage);
   }
 };
+
 
 export const updateRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -62,6 +64,7 @@ export const updateRestaurant = async (req: Request, res: Response) => {
     res.status(500).send(errorMessage);
   }
 };
+
 
 export const deleteRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;
