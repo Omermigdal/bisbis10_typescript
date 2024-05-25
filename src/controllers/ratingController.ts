@@ -10,6 +10,6 @@ export const addRating = async (req: Request, res: Response) => {
   }
   catch(errorMessage)
     {
-      return errorMessage;
+      res.status(500).send(errorMessage);
     }
 };

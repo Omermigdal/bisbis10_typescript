@@ -11,7 +11,7 @@ export const addDish = async (req: Request, res: Response) => {
   }
   catch(errorMessage)
   {
-    return errorMessage;
+    res.status(500).send(errorMessage);
   }
 };
 
@@ -25,7 +25,7 @@ export const updateDish = async (req: Request, res: Response) => {
   }
   catch(errorMessage)
   {
-    return errorMessage;
+    res.status(500).send(errorMessage);
   }
 };
 
@@ -41,7 +41,7 @@ try{
 
   catch(errorMessage)
   {
-    return errorMessage;
+    res.status(500).send(errorMessage);
   }
 };
 
@@ -53,7 +53,7 @@ export const getDishesByRestaurant = async (req: Request, res: Response) => {
   }
   catch(errorMessage)
   {
-    return errorMessage;
+    res.status(500).send(errorMessage);
   }
   
 };

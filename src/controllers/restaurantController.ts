@@ -10,7 +10,7 @@ if (req.query.cuisine) {
     }
     catch(errorMessage)
     {
-      return errorMessage;
+      res.status(500).send(errorMessage);
     }
   }
   else {
@@ -20,7 +20,7 @@ if (req.query.cuisine) {
     }
     catch(errorMessage)
     {
-      return errorMessage;
+      res.status(500).send(errorMessage);
     }
 }
 };
@@ -34,7 +34,7 @@ export const getRestaurantById = async (req: Request, res: Response) => {
   }
   catch(errorMessage)
   {
-    return errorMessage;
+    res.status(500).send(errorMessage);
   }
 };
 
@@ -46,7 +46,7 @@ export const addRestaurant = async (req: Request, res: Response) => {
   }
   catch(errorMessage)
   {
-    return errorMessage;
+    res.status(500).send(errorMessage);
   }
 };
 
@@ -59,7 +59,7 @@ export const updateRestaurant = async (req: Request, res: Response) => {
   }
   catch(errorMessage)
   {
-    return errorMessage;
+    res.status(500).send(errorMessage);
   }
 };
 
@@ -72,7 +72,7 @@ export const deleteRestaurant = async (req: Request, res: Response) => {
   }
   catch(errorMessage)
   {
-    return errorMessage;
+    res.status(500).send(errorMessage);
   }
 
 };
