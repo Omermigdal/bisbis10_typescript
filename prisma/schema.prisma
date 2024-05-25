@@ -32,7 +32,7 @@ model Dish {
 }
 
 model Rating {
-  id           Int        @id @default(autoincrement())
+  id           Int        @id @default(autoincrement()) 
   rating       Decimal    @db.Decimal(2, 1)
   restaurantId Int        @map("restaurant_id")
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)

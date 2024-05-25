@@ -1,49 +1,17 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
+import { Rating_add } from '../services/ratingService';
 
-const prisma = new PrismaClient();
 
 export const addRating = async (req: Request, res: Response) => {
   const { restaurantId, rating } = req.body;
-
-  // Validate inputs
-  if (!restaurantId|| rating < 0 || rating > 10) {
-    return res.status(400).json({ error: 'Invalid input, please rate between 0 and 10' });
-  }
-
-  try {
-    // Start a transaction
-    await prisma.$transaction([
-      prisma.rating.create({
-        data: { restaurantId, rating },
-      }),
-    ]);
-
-    const ratings = await prisma.rating.findMany({
-      where: { restaurantId },
-    });
-    
-    let sum = 0;
-    for (let i = 0; i < ratings.length; i++) {
-      sum += Number(ratings[i].rating);
-    }
-    const averageRating = sum / ratings.length;
-
-    await prisma.restaurant.update({
-      where: { id: restaurantId },
-      data: {
-        averageRating,
-      },
-    });
-    
-    const updatedRestaurant = await prisma.restaurant.findUnique({
-      where: { id: restaurantId },
-      include: { ratings: true },
-    });
-    
+  try{
+    await Rating_add(restaurantId,rating);
     res.status(200).send();
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while processing your request' });
   }
+  catch(errorMessage)
+    {
+      return errorMessage;
+    }
+  
 };
