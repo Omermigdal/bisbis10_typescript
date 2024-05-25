@@ -1,44 +1,59 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { Dish_addToSystem,Dish_deleteById,Dish_getByRestaurantId,Dish_update } from '../services/dishService';
 
-const prisma = new PrismaClient();
 
 export const addDish = async (req: Request, res: Response) => {
   const restaurantId= parseInt(req.params.id);
   const { name, description, price } = req.body;
-  await prisma.dish.create({
-    data: { name, description, price, restaurantId },
-  });
-  res.status(201).send();
+  try{
+    await Dish_addToSystem( name, description, price,restaurantId);
+    res.status(201).send(); //201= created
+  }
+  catch(errorMessage)
+  {
+    return errorMessage;
+  }
 };
+
 
 export const updateDish = async (req: Request, res: Response) => {
   const { id, dishId } = req.params;
   const { name, description, price } = req.body;
-  const updatedDish = await prisma.dish.update({
-    where: { id: parseInt(dishId) },
-    data: { name, description, price, restaurantId: parseInt(id) },
-  });
-  res.status(200).send();
+  try{
+    await Dish_update(name,description,price,parseInt(id),parseInt(dishId))
+    res.status(200).send();
+  }
+  catch(errorMessage)
+  {
+    return errorMessage;
+  }
 };
+
+
+
 
 export const deleteDish = async (req: Request, res: Response) => {
   const { dishId } = req.params;
-  await prisma.dish.delete({ where: { id: parseInt(dishId) } });
+try{
+  await Dish_deleteById(parseInt(dishId));
   res.status(204).send();
+}
+
+  catch(errorMessage)
+  {
+    return errorMessage;
+  }
 };
 
 export const getDishesByRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const dishes = await prisma.dish.findMany({
-    where: { restaurantId: parseInt(id) },
-    select: {
-      id: true,
-      name: true,
-      description: true,
-      price: true,
-    },
-      
-  });
+  try{
+  const dishes = await Dish_getByRestaurantId(parseInt(id));
   res.status(200).json(dishes);
+  }
+  catch(errorMessage)
+  {
+    return errorMessage;
+  }
+  
 };
