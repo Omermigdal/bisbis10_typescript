@@ -14,9 +14,9 @@ The system provides the following APIs:
 
 ## Technical Aspects
 
-The system is built using Express as net framework. 
-Data persistence is managed using PostgreSQL.
-We manage our database interactions using [Prisma](https://www.prisma.io/docs), an open-source database ORM .
+- The system is built using Express as net framework. 
+- Data persistence is managed using PostgreSQL.
+- database interactions is managed by using [Prisma](https://www.prisma.io/docs), an open-source database ORM .
 
 ## APIs
 
