@@ -14,11 +14,9 @@ The system provides the following APIs:
 
 ## Technical Aspects
 
-The system is built using Express, leveraging its robust framework for creating RESTful APIs. Data persistence can be managed using an in-memory database for simplicity, or a more robust solution like PostgreSQL for production.
-
-## Homework Task
-
-Candidates are expected to design and implement the above APIs, adhering to RESTful principles.
+The system is built using Express as net framework. 
+Data persistence is managed using PostgreSQL.
+We manage our database interactions using [Prisma](https://www.prisma.io/docs), an open-source database ORM .
 
 ## APIs
 
@@ -54,9 +52,7 @@ Candidates are expected to design and implement the above APIs, adhering to REST
 | Delete a dish             | DELETE /restaurants/{id}/dishes/{dishId} |                                        | 204 No Content  |                                                                  |
 | Get dishes by a restaurant| GET /restaurants/{id}/dishes  |                                         | 200 OK          | [{"id":"1","name":"Humus","description":"Good one","price": 48}] |
 
-## Jump Start
 
-For your convenience, docker-compose.yml includes Postgresql DB, the app is already pointing to this connection. In addition, you have the schema and data SQL files that can setup your DB schema and init data.
 
 ## Prerequisite
 
