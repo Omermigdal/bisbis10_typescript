@@ -9,7 +9,7 @@ try{
     catch(err:any){
         throw err.message
     }
-}
+};
 
 export const getByCuisine = async (cuisine:string)=>{
   try{
@@ -24,10 +24,9 @@ export const getByCuisine = async (cuisine:string)=>{
   catch(err:any){
     throw err.message
 }
-  }
+};
 
-export const getById = async (_id: number) =>
-  {
+export const getById = async (_id: number) =>{
     try{
     return prisma.restaurant.findUnique({
       where: { id: _id },
@@ -37,10 +36,9 @@ export const getById = async (_id: number) =>
     catch(err:any){
       throw Error(err.messge)
   }
-}
+};
 
-export const addToSystem = async (name:string,isKosher:boolean,cuisines:Array<string>) =>
-{
+export const addToSystem = async (name:string,isKosher:boolean,cuisines:Array<string>) =>{
   try{
     await prisma.restaurant.create({
       data: { name, isKosher, cuisines },
@@ -51,10 +49,9 @@ export const addToSystem = async (name:string,isKosher:boolean,cuisines:Array<st
   }
 
 
-}
+};
 
-export const update = async (_id:number,name:string, isKosher:boolean,cuisines:Array<string>) =>
-{
+export const update = async (_id:number,name:string, isKosher:boolean,cuisines:Array<string>) =>{
   try {
      await prisma.restaurant.update({
     where: { id: _id },
@@ -64,7 +61,7 @@ export const update = async (_id:number,name:string, isKosher:boolean,cuisines:A
     throw err.message   
   }
 
-}
+};
 
 
 export const deleteById = async(_id:number)=>{
@@ -77,4 +74,4 @@ export const deleteById = async(_id:number)=>{
    throw err.message   
  }
 
-}
+};

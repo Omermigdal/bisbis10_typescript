@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
 import { Rating_add } from '../services/ratingService';
 
 
@@ -13,5 +12,4 @@ export const addRating = async (req: Request, res: Response) => {
     {
       return errorMessage;
     }
-  
 };
