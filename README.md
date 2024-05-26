@@ -66,3 +66,5 @@ The system provides the following APIs:
 - **Quickstart**: run 'npm run restaurants'.
 - **Database**: For your convinience , use the ORM UI by running 'npx prisma studio'.
 
+   Please notice postman_collections folder contains postman collections you can use to test specific actions of the API. please use seed_database to have data in the database before running any other actions.
+
