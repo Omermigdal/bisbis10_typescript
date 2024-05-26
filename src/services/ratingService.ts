@@ -21,7 +21,6 @@ export const Rating_add = async (restaurantId:number,rating:number) =>
         sum += Number(ratings[i].rating);
         }
         const averageRating = sum / ratings.length;
-
         await prisma.restaurant.update({
         where: { id: restaurantId },
         data: {

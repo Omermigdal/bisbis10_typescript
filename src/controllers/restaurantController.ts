@@ -8,8 +8,7 @@ if (req.query.cuisine) {
     const restaurants = await getByCuisine(cuisine);
     res.status(200).json(restaurants);
     }
-    catch(errorMessage)
-    {
+    catch(errorMessage){
       res.status(500).send(errorMessage);
     }
   }
@@ -18,8 +17,7 @@ if (req.query.cuisine) {
     const restaurants =await getAll();
     res.status(200).json(restaurants).send();
     }
-    catch(errorMessage)
-    {
+    catch(errorMessage){
       res.status(500).send(errorMessage);
     }
 }
@@ -32,8 +30,7 @@ export const getRestaurantById = async (req: Request, res: Response) => {
   const restaurant = await getById(parseInt(id));
   res.status(200).json(restaurant);
   }
-  catch(errorMessage)
-  {
+  catch(errorMessage){
     res.status(500).send(errorMessage);
   }
 };
@@ -45,8 +42,7 @@ export const addRestaurant = async (req: Request, res: Response) => {
     await addToSystem(name,isKosher,cuisines);
     res.status(201).send(); //201= created
   }
-  catch(errorMessage)
-  {
+  catch(errorMessage){
     res.status(500).send(errorMessage);
   }
 };
@@ -59,8 +55,7 @@ export const updateRestaurant = async (req: Request, res: Response) => {
     await update(parseInt(id), name,isKosher,cuisines);
     res.status(200).send();
   }
-  catch(errorMessage)
-  {
+  catch(errorMessage){
     res.status(500).send(errorMessage);
   }
 };
@@ -73,9 +68,7 @@ export const deleteRestaurant = async (req: Request, res: Response) => {
     await deleteById(parseInt(id));
     res.status(200).send();
   }
-  catch(errorMessage)
-  {
+  catch(errorMessage){
     res.status(500).send(errorMessage);
   }
-
 };

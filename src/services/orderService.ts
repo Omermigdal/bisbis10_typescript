@@ -14,7 +14,6 @@ export const Order_create = async (restaurantId:number,orderItems:any) =>
             },
         });
         return order;
-
     }
     catch(err:any){
         throw err.message

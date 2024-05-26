@@ -7,8 +7,7 @@ export const makeOrder = async (req: Request, res: Response) => {
     const newOrder= await Order_create(restaurantId,orderItems);
     res.status(200).json(newOrder.id); 
     }
-    catch(errorMessage)
-    {
+    catch(errorMessage){
       res.status(500).send(errorMessage);
     }
 };

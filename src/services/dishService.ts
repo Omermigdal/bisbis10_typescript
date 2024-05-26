@@ -59,6 +59,3 @@ export const Dish_getByRestaurantId = async(restaurant_id:number)=>{
      throw err.message   
    }
 };
-
-
-    

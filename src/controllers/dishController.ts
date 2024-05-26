@@ -55,5 +55,4 @@ export const getDishesByRestaurant = async (req: Request, res: Response) => {
   {
     res.status(500).send(errorMessage);
   }
-  
 };

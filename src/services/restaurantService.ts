@@ -47,8 +47,6 @@ export const addToSystem = async (name:string,isKosher:boolean,cuisines:Array<st
   catch(err:any){
     throw err.message   
   }
-
-
 };
 
 export const update = async (_id:number,name:string, isKosher:boolean,cuisines:Array<string>) =>{
@@ -60,7 +58,6 @@ export const update = async (_id:number,name:string, isKosher:boolean,cuisines:A
   catch(err:any){
     throw err.message   
   }
-
 };
 
 
@@ -73,5 +70,4 @@ export const deleteById = async(_id:number)=>{
  catch(err:any){
    throw err.message   
  }
-
 };

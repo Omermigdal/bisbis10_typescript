@@ -7,8 +7,7 @@ export const addRating = async (req: Request, res: Response) => {
     await Rating_add(restaurantId,rating);
     res.status(200).send();
   }
-  catch(errorMessage)
-    {
+  catch(errorMessage){
       res.status(500).send(errorMessage);
     }
 };
