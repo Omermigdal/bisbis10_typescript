@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "8bade785-a404-4b38-9318-520965876f1c",
+		"name": "fetch data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27052829"
+	},
+	"item": [
+		{
+			"name": "Get all restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get restaurants by cuisine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/restaurants?cuisine=Asian",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "cuisine",
+							"value": "Asian"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get restaurant with id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get restaurant with id 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get dishes by a restaurant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1/dishes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1",
+						"dishes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

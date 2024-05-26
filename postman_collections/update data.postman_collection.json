@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "075c629c-e700-4566-a39f-e06dfd248513",
+		"name": "update data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27052829"
+	},
+	"item": [
+		{
+			"name": "Update restaurant 1 to have Japanese cuisine",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cuisines\": [\"japanese\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update dish 1 in restaurant 1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Great one\",\n    \"price\": 34\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1/dishes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1",
+						"dishes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

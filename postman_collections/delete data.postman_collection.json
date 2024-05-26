@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "9ed51aa3-9cd0-4149-9cc1-cc5a4a3f8587",
+		"name": "delete data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27052829"
+	},
+	"item": [
+		{
+			"name": "Delete a restaurant",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete dish 2 in restaurant 1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1/dishes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1",
+						"dishes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

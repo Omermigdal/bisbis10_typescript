@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "0e5d94f6-e001-4447-a3a1-5a1f2a08210f",
+		"name": "seed data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27052829"
+	},
+	"item": [
+		{
+			"name": "Add Levantini",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Halevantini\",\"isKosher\": true,\"cuisines\": [\"Israeli\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Taizu Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Taizu\",\"isKosher\": false,\"cuisines\": [\"Asian\",\"Mexican\",\"Indian\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.5 rating to restaurant id 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": 1,\n    \"rating\": 7.5\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/ratings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.3 rating to restaurant with id 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": 1,\n    \"rating\": 7.3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/ratings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6 rating to restaurant with id 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": 2,\n    \"rating\": 6\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/ratings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add pad Thai dish to id 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"pad thai\",\n    \"description\": \"awsome\",\n    \"price\": 40\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1/dishes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1",
+						"dishes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Sushi dish to id 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"sushi\",\n    \"description\": \"too expensive\",\n    \"price\": 80\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/restaurants/1/dishes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"1",
+						"dishes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Shawarma to id 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Shawarma\",\n    \"description\": \"oh my god. Amazing!!!\",\n    \"price\": 35\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/restaurants/2/dishes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"2",
+						"dishes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Falafel to id 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Falafel\",\n    \"description\": \"good\",\n    \"price\": 37\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/restaurants/2/dishes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"restaurants",
+						"2",
+						"dishes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Place an order #1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": 1,\n    \"orderItems\": [\n        {\n            \"dishId\": 1,\n            \"amount\": 2\n        },\n        {\n            \"dishId\": 2,\n            \"amount\": 1\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Place an order #2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": 2,\n    \"orderItems\": [\n        {\n            \"dishId\": 3,\n            \"amount\": 4\n        },\n        {\n            \"dishId\": 4,\n            \"amount\": 2\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
