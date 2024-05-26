@@ -8,7 +8,7 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "nodemon index.ts",
-    "restaurants": "npm install && docker-compose -p restaurants_database up -d && npm run build &&  node -e \"setTimeout(() => console.log('Loading...'), 15000)\" && npx prisma migrate dev --name init && npm start"
+    "restaurants": "npm install && docker-compose -p restaurants_database up -d && npm run build &&  node -e \"setTimeout(() => console.log('Loading...'), 40000)\" && npx prisma migrate dev --name init && npm start"
   },
   "keywords": [],
   "author": "",
